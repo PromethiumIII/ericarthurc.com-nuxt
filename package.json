@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "production": "node --require dotenv/config ./.output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "nuxt": "^3.3.3",
+    "prisma": "^4.12.0",
+    "sass": "^1.61.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "redis": "^4.6.5"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  }
+}
