@@ -1,11 +1,12 @@
 <template>
   <div>
     <h2>Stuff</h2>
-    <div v-for="post in posts" :key="post.id">
+    <div v-for="meta in metaList" :key="meta.id">
       <div>
-        <span>{{ post.title }}</span>
-        <span>{{ new Date(post.date) }}</span>
-        <div v-for="category in post.categories">
+        <span>{{ meta.title }}</span>
+        <span>{{ new Date(meta.date).toLocaleDateString() }}</span>
+        <NuxtLink :to="`/blog/${meta.slug}`">{{ meta.slug }}</NuxtLink>
+        <div v-for="category in meta.categories">
           <span>{{ category }}</span>
         </div>
       </div>
@@ -14,7 +15,11 @@
 </template>
 
 <script lang="ts" setup>
-const { data: posts } = await useAsyncData(() => $fetch("/api/post"));
+const { data: metaList } = await useAsyncData(() =>
+  $fetch("/meta", {
+    method: "GET",
+  })
+);
 
 definePageMeta({
   layout: "main",

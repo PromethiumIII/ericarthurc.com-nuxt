@@ -11,6 +11,10 @@ export default defineNuxtConfig({
     }
   },
   css: ["@/assets/styles/main.scss"],
+  routeRules: {
+    // "/": {ssr: true}
+    "/blog": {redirect: "/"}
+  },
   devServer: {
     port: 8000,
   },

@@ -1,10 +1,7 @@
-<script setup>
-import navbar from "./partials/navbar.vue";
-</script>
-
 <template>
-  <div>
-    <navbar></navbar>
+  <header>
+    <Sidebar></Sidebar>
+    <Navbar></Navbar>
     <slot />
-  </div>
+  </header>
 </template>

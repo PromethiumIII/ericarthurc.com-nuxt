@@ -1,10 +1,17 @@
 <template>
   <div>
-    <h2>RNG</h2>
+    <span>{{ rng }}</span>
+    <button @click="randomize">Generate</button>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+const rng = ref();
+
+function randomize() {
+  rng.value = Math.floor(Math.random() * 101);
+}
+
 definePageMeta({
   layout: "main",
 });
