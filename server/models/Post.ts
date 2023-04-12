@@ -1,19 +1,24 @@
 import { Post } from "@prisma/client";
-import redisClient from "../db/redis";
+import { getRedisCache } from "../db/redis";
 
-// Redis
-async function getRedisPostList(): Promise<Post[]> {
-  await redisClient.connect();
-
-  const cache = await redisClient.get("cache");
-
-  await redisClient.disconnect();
+// Helper
+async function getRedisParsedPostList(): Promise<Post[]> {
+  const cache = await getRedisCache();
 
   if (cache) {
     return JSON.parse(cache);
   }
 
   return [];
+}
+
+// Redis
+export async function getRedisPostBySlug(
+  paramSlug: string
+): Promise<Post | undefined> {
+  const parsedPosts = await getRedisParsedPostList();
+
+  return parsedPosts.find((p) => p.slug === paramSlug);
 }
 
 // PostgreSQL

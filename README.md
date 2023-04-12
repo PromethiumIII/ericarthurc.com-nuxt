@@ -1,6 +1,6 @@
 ## Ericarthurc.com
 
-## [0.0.2] [not in production]
+## [0.0.3] [not in production]
 
 ## Project Layout
 
