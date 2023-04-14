@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Stuff</h2>
     <div v-for="meta in metaList" :key="meta.id">
       <div>
         <span>{{ meta.title }}</span>
